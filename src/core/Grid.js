@@ -195,18 +195,18 @@ Grid.prototype.getNeighbors = function(node, diagonalMovement) {
         throw new Error('Incorrect value of diagonalMovement');
     }
 
-    // ↖
+    /*// ↖
     if (d0 && this.isWalkableAt(x - 1, y - 1)) {
         neighbors.push(nodes[y - 1][x - 1]);
-    }
+    }*/
     // ↗
     if (d1 && this.isWalkableAt(x + 1, y - 1)) {
         neighbors.push(nodes[y - 1][x + 1]);
     }
-    // ↘
+    /*// ↘
     if (d2 && this.isWalkableAt(x + 1, y + 1)) {
         neighbors.push(nodes[y + 1][x + 1]);
-    }
+    }*/
     // ↙
     if (d3 && this.isWalkableAt(x - 1, y + 1)) {
         neighbors.push(nodes[y + 1][x - 1]);
