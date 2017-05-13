@@ -51,7 +51,7 @@ function AStarFinder(opt) {
  * @return {Array<Array<number>>} The path, including both start and
  *     end positions.
  */
-AStarFinder.prototype.findPath = function(startX, startY, goalFunc, endX, endY grid) {
+AStarFinder.prototype.findPath = function(startX, startY, goalFunc, endX, endY, grid) {
     var openList = new Heap(function(nodeA, nodeB) {
             return nodeA.f - nodeB.f;
         }),
