@@ -101,7 +101,9 @@ AStarFinder.prototype.findPath = function(startX, startY, goalFunc, endX, endY g
             // can be reached with smaller cost from the current node
             if (!neighbor.opened || ng < neighbor.g) {
                 neighbor.g = ng;
-                neighbor.h = neighbor.h || weight * heuristic(abs(x - endX), abs(y - endY));
+                let dx = endX ? abs(x - endX) : 0
+                let dy = endY ? abs(y - endY) : 0
+                neighbor.h = neighbor.h || weight * heuristic(dx, dy);
                 neighbor.f = neighbor.g + neighbor.h;
                 neighbor.parent = node;
 
