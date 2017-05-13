@@ -51,12 +51,11 @@ function AStarFinder(opt) {
  * @return {Array<Array<number>>} The path, including both start and
  *     end positions.
  */
-AStarFinder.prototype.findPath = function(startX, startY, endX, endY, grid) {
+AStarFinder.prototype.findPath = function(startX, startY, goalFunc, grid) {
     var openList = new Heap(function(nodeA, nodeB) {
             return nodeA.f - nodeB.f;
         }),
         startNode = grid.getNodeAt(startX, startY),
-        endNode = grid.getNodeAt(endX, endY),
         heuristic = this.heuristic,
         diagonalMovement = this.diagonalMovement,
         weight = this.weight,
@@ -78,8 +77,8 @@ AStarFinder.prototype.findPath = function(startX, startY, endX, endY, grid) {
         node.closed = true;
 
         // if reached the end position, construct the path and return it
-        if (node === endNode) {
-            return Util.backtrace(endNode);
+        if (goalFunc(node) == true) {
+            return Util.backtrace(node);
         }
 
         // get neigbours of the current node
